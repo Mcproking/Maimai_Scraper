@@ -30,9 +30,6 @@ def main():
     extractRecordsHits()
     toc = time.perf_counter()
     print(f"Done in {toc - tic:0.4f} seconds")
-    Exit = input("close?")
-    if Exit:
-        driver.quit()
 
 def Login(Details):
     global driver
@@ -41,7 +38,7 @@ def Login(Details):
 
     # Website URL and webkits
     URL = "https://maimaidx-eng.com/maimai-mobile/home/"
-    PATH = webdriver.Chrome()
+    PATH = r"chromedriver_win32\\chromedriver.exe"
 
     # Init the Webdriver and connect to the website
     driver = webdriver.Chrome(PATH)
@@ -117,4 +114,5 @@ def insertRecordstxt():
         file.write(hitrecord_List[record])
         file.close()
     
-main()
+if __name__ == "__main__":
+    pass
