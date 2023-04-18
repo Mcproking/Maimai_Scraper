@@ -321,28 +321,278 @@ def extractHits(FileQueue, ChartType):
         hitTypes = "BreakCritOnly"
         # This is for DX Charts
         if type == "Deluxe":
-            for x in range(1,5):
-                taps.append(tree[x])
-            for x in range(6,10):
-                hold.append(tree[x])
-            for x in range(11,15):
-                slide.append(tree[x])
-            for x in range(16,20):
-                touch.append(tree[x])
-            for x in range(16,21):
-                breaks.append(tree[x])
+            for x in range(1 - reduce,5 - reduce):
+                if tree[1] == "　":
+                    reduce = 4
+                    taps.append(None)
+                else:
+                    taps.append(tree[x])
+
+            for x in range(6 - reduce,10 - reduce):      
+                if tree[6 - reduce] == "　":
+                    count = 0
+                    while reduce == 4:
+                        if count == 4:
+                            break
+                        hold.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            hold.append(None)
+                            count +=1
+                        reduce = 4
+                    else:
+                        reduce = 8
+                    break
+                else:
+                    hold.append(tree[x])
+
+            for x in range(11 - reduce,15 - reduce):
+                if tree[11- reduce] == "　":
+                    count = 0
+                    while reduce == 8:
+                        if count == 4:
+                            break
+                        slide.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            slide.append(None)
+                            count +=1
+                        reduce = 4
+                    elif reduce == 4:
+                        while reduce == 4:
+                            if count == 4:
+                                break
+                            slide.append(None)
+                            count +=1
+                        reduce = 8
+                    else:
+                        reduce = 12
+                    break
+
+                else:
+                    slide.append(tree[x])
+
+            for x in range(16 - reduce, 20 - reduce):
+                if tree[15-reduce] == "　":
+                    count = 0
+                    while reduce == 12:
+                        if count == 4:
+                            break
+                        touch.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            touch.append(None)
+                            count +=1
+                        reduce = 4
+                    elif reduce == 4:
+                        while reduce == 4:
+                            if count == 4:
+                                break
+                            touch.append(None)
+                            count +=1
+                        reduce = 8
+                    elif reduce == 8:
+                        while reduce == 8:
+                            if count == 4:
+                                break
+                            touch.append(None)
+                            count +=1
+                        reduce = 12
+                    else:
+                        reduce = 16
+                    break
+                else:
+                    touch.append(tree[x])
+
+                
+            for x in range(20 - reduce,25 - reduce):
+                if tree[20 - reduce] == "　":
+                    count = 0
+                    while reduce == 16:
+                        if count == 4:
+                            break
+                        breaks.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count +=1
+                        reduce = 4
+                    elif reduce == 4:
+                        while reduce == 4:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count +=1
+                        reduce = 8
+                    elif reduce == 8:
+                        while reduce == 8:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count +=1
+                        reduce = 12
+                    elif reduce == 16:
+                        while reduce == 16:
+                            if count == 5:
+                                break
+                            breaks.append(None)
+                            count += 1
+                        reduce = 16
+                    else:
+                        reduce = 20
+                    break
+                else:
+                    breaks.append(tree[x])
+                    
         # This is for Std Chart
         else:
-            for x in range(1,5):
-                taps.append(tree[x])
-            for x in range(6,10):
-                hold.append(tree[x])
-            for x in range(11,15):
-                slide.append(tree[x])
-            for x in range(16,20):
-                touch.append(None)
-            for x in range(16,21):
-                breaks.append(tree[x])
+            for x in range(1 - reduce,5 - reduce):
+                if tree[1] == "　":
+                    reduce = 4
+                    taps.append(None)
+                else:
+                    taps.append(tree[x])
+
+            for x in range(6 - reduce,10 - reduce):      
+                if tree[6 - reduce] == "　":
+                    count = 0
+                    while reduce == 4:
+                        if count == 4:
+                            break
+                        hold.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            hold.append(None)
+                            count +=1
+                        reduce = 4
+                    else:
+                        reduce = 8
+                    break
+                else:
+                    hold.append(tree[x])
+
+            for x in range(11 - reduce,15 - reduce):
+                if tree[11- reduce] == "　":
+                    count = 0
+                    while reduce == 8:
+                        if count == 4:
+                            break
+                        slide.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            slide.append(None)
+                            count +=1
+                        reduce = 4
+                    elif reduce == 4:
+                        while reduce == 4:
+                            if count == 4:
+                                break
+                            slide.append(None)
+                            count +=1
+                        reduce = 8
+                    else:
+                        reduce = 12
+                    break
+
+                else:
+                    slide.append(tree[x])
+
+            for x in range(16- reduce, 20 - reduce):
+                if tree[15-reduce] == "　":
+                    count = 0
+                    while reduce == 12:
+                        if count == 4:
+                            break
+                        touch.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            touch.append(None)
+                            count +=1
+                        reduce = 4
+                    elif reduce == 4:
+                        while reduce == 4:
+                            if count == 4:
+                                break
+                            touch.append(None)
+                            count +=1
+                        reduce = 8
+                    elif reduce == 8:
+                        while reduce == 8:
+                            if count == 4:
+                                break
+                            touch.append(None)
+                            count +=1
+                        reduce = 12
+                    else:
+                        reduce = 16
+                    break
+                else:
+                    touch.append(None)
+                    if len(touch) == 4:
+                        reduce = 4
+                
+            for x in range(20 - reduce,25 - reduce):
+                if tree[20 - reduce] == "　":
+                    count = 0
+                    while reduce == 16:
+                        if count == 4:
+                            break
+                        breaks.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count +=1
+                        reduce = 4
+                    elif reduce == 4:
+                        while reduce == 4:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count +=1
+                        reduce = 8
+                    elif reduce == 8:
+                        while reduce == 8:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count +=1
+                        reduce = 12
+                    elif reduce == 16:
+                        while reduce == 16:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count += 1
+                        reduce = 16
+                    else:
+                        reduce = 20
+                    break
+                else:
+                    breaks.append(tree[x])
 
     # Type for all perfects
     def PerfectOnly(type):
@@ -350,28 +600,279 @@ def extractHits(FileQueue, ChartType):
         hitTypes = "PerfectOnly"
         # Only work when it is Dx Charts        
         if type == "Deluxe":
-            for x in range(1,5):
-                taps.append(tree[x])
-            for x in range(6,10):
-                hold.append(tree[x])
-            for x in range(11,15):
-                slide.append(tree[x])
-            for x in range(16,20):
-                touch.append(tree[x])
-            for x in range(21,25):
-                breaks.append(tree[x])
+            for x in range(1 - reduce,5 - reduce):
+                if tree[1] == "　":
+                    reduce = 4
+                    taps.append(None)
+                else:
+                    taps.append(tree[x])
+
+            for x in range(6 - reduce,10 - reduce):      
+                if tree[6 - reduce] == "　":
+                    count = 0
+                    while reduce == 4:
+                        if count == 4:
+                            break
+                        hold.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            hold.append(None)
+                            count +=1
+                        reduce = 4
+                    else:
+                        reduce = 8
+                    break
+                else:
+                    hold.append(tree[x])
+
+            for x in range(11 - reduce,15 - reduce):
+                if tree[11- reduce] == "　":
+                    count = 0
+                    while reduce == 8:
+                        if count == 4:
+                            break
+                        slide.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            slide.append(None)
+                            count +=1
+                        reduce = 4
+                    elif reduce == 4:
+                        while reduce == 4:
+                            if count == 4:
+                                break
+                            slide.append(None)
+                            count +=1
+                        reduce = 8
+                    else:
+                        reduce = 12
+                    break
+
+                else:
+                    slide.append(tree[x])
+
+            for x in range(16 - reduce, 20 - reduce):
+                if tree[16-reduce] == "　":
+                    count = 0
+                    while reduce == 12:
+                        if count == 4:
+                            break
+                        touch.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            touch.append(None)
+                            count +=1
+                        reduce = 4
+                    elif reduce == 4:
+                        while reduce == 4:
+                            if count == 4:
+                                break
+                            touch.append(None)
+                            count +=1
+                        reduce = 8
+                    elif reduce == 8:
+                        while reduce == 8:
+                            if count == 4:
+                                break
+                            touch.append(None)
+                            count +=1
+                        reduce = 12
+                    else:
+                        reduce = 16
+                    break
+                else:
+                    touch.append(tree[x])
+
+                
+            for x in range(20 - reduce,25 - reduce):
+                if tree[20 - reduce] == "　":
+                    count = 0
+                    while reduce == 16:
+                        if count == 4:
+                            break
+                        breaks.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count +=1
+                        reduce = 4
+                    elif reduce == 4:
+                        while reduce == 4:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count +=1
+                        reduce = 8
+                    elif reduce == 8:
+                        while reduce == 8:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count +=1
+                        reduce = 12
+                    elif reduce == 16:
+                        while reduce == 16:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count += 1
+                        reduce = 16
+                    else:
+                        reduce = 20
+                    break
+                else:
+                    breaks.append(tree[x])
+
         # This is for Std Charts
         else: 
-            for x in range(1,5):
-                taps.append(tree[x])
-            for x in range(6,10):
-                hold.append(tree[x])
-            for x in range(11,15):
-                slide.append(tree[x])
-            for x in range(16,20):
-                touch.append(None)
-            for x in range(17,21):
-                breaks.append(tree[x])
+            for x in range(1 - reduce,5 - reduce):
+                if tree[1] == "　":
+                    reduce = 4
+                    taps.append(None)
+                else:
+                    taps.append(tree[x])
+
+            for x in range(6 - reduce,10 - reduce):      
+                if tree[6 - reduce] == "　":
+                    count = 0
+                    while reduce == 4:
+                        if count == 4:
+                            break
+                        hold.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            hold.append(None)
+                            count +=1
+                        reduce = 4
+                    else:
+                        reduce = 8
+                    break
+                else:
+                    hold.append(tree[x])
+
+            for x in range(11 - reduce,15 - reduce):
+                if tree[11- reduce] == "　":
+                    count = 0
+                    while reduce == 8:
+                        if count == 4:
+                            break
+                        slide.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            slide.append(None)
+                            count +=1
+                        reduce = 4
+                    elif reduce == 4:
+                        while reduce == 4:
+                            if count == 4:
+                                break
+                            slide.append(None)
+                            count +=1
+                        reduce = 8
+                    else:
+                        reduce = 12
+                    break
+
+                else:
+                    slide.append(tree[x])
+
+            for x in range(16 - reduce, 20 - reduce):
+                if tree[16-reduce] == "　":
+                    count = 0
+                    while reduce == 12:
+                        if count == 4:
+                            break
+                        touch.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            touch.append(None)
+                            count +=1
+                        reduce = 4
+                    elif reduce == 4:
+                        while reduce == 4:
+                            if count == 4:
+                                break
+                            touch.append(None)
+                            count +=1
+                        reduce = 8
+                    elif reduce == 8:
+                        while reduce == 8:
+                            if count == 4:
+                                break
+                            touch.append(None)
+                            count +=1
+                        reduce = 12
+                    else:
+                        reduce = 16
+                    break
+                else:
+                    touch.append(None)
+                    if len(touch) == 4:
+                        reduce = 4
+
+                
+            for x in range(20 - reduce,25 - reduce):
+                if tree[20 - reduce] == "　":
+                    count = 0
+                    while reduce == 16:
+                        if count == 4:
+                            break
+                        breaks.append(None)
+                        count += 1
+                    if reduce == 0:
+                        while reduce == 0:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count +=1
+                        reduce = 4
+                    elif reduce == 4:
+                        while reduce == 4:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count +=1
+                        reduce = 8
+                    elif reduce == 8:
+                        while reduce == 8:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count +=1
+                        reduce = 12
+                    elif reduce == 16:
+                        while reduce == 16:
+                            if count == 4:
+                                break
+                            breaks.append(None)
+                            count += 1
+                        reduce = 16
+                    else:
+                        reduce = 20
+                    break
+                else:
+                    breaks.append(tree[x])
 
 
     if ChartType == "Standard":
