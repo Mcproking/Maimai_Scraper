@@ -27,7 +27,6 @@ def main():
     openRecord()
     time.sleep(randNum(3,5))
     insertRecordstxt()
-    extractRecordsHits()
     toc = time.perf_counter()
     print(f"Done in {toc - tic:0.4f} seconds")
 
