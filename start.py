@@ -64,10 +64,9 @@ def writeintoJSON(total_files):
         # print("{} - {}: {} - {} - {} - {} - {} - {} - {} - F:{} L:{} - CHART: {} | Type: {} > T:{} - H:{} - S:{} - t:{} - B:{}".format(x ,TimeStamp ,SongName ,Difficulty ,Chart ,Achivement ,Deluxe, FcOrFs[0], FcOrFs[1], delay[0],delay[1],hits[5],hits[6],hits[0],hits[1],hits[2],hits[3],hits[4]))
 
 
-    for playlist in Final_Plays_ListDict:
-        dump = json.dumps(playlist,indent=4,ensure_ascii=True)
-        with open(r"jsonFile.json","a") as f:
-            f.write(dump)
+    dump = json.dumps(Final_Plays_ListDict,indent=4,ensure_ascii=True)
+    with open(r"jsonFile.json","a") as f:
+        f.write(dump)
         
 if __name__ == "__main__":
     main()

@@ -102,9 +102,6 @@ def extractRecordsHits():
 def insertRecordstxt():
     records_List = extractRecords()
     hitrecord_List = extractRecordsHits()
-    if not os.path.exists("./Html_Extracted"):
-        os.mkdir("./Html_Extracted")
-        print("Html_Extracted Folder Made")
 
     for record in range(0,50):
         file = open(r"./Html_Extracted/{}.txt".format(record+1), "w", encoding="UTF-8")

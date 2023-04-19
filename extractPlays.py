@@ -8,11 +8,19 @@ import re as re
 def calcFiles():
     count = 0
     dir_path = r"./Html_Extracted/"
-    for path in os.scandir(dir_path):
-            if path.is_file():
-                count +=1
-    # print("File Count:", count)
-    return count
+    if not os.path.exists("./Html_Extracted"):
+        os.mkdir("./Html_Extracted")
+        print("Html_Extracted Folder Made")
+    else:
+        pass
+    try:
+        for path in os.scandir(dir_path):
+                if path.is_file():
+                    count +=1
+        # print("File Count:", count)
+        return count
+    except FileNotFoundError:
+        raise('Found does not exsit nor can be created')
 total_files = int(calcFiles()/2)
 
 # open the HTML files as xml files
